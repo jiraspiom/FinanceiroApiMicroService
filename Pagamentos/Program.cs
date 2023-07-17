@@ -2,6 +2,7 @@ using financeiro.DataBase;
 using Pagamentos.DataBase;
 using Pagamentos.Interface;
 using Pagamentos.Repository;
+using Pagamentos.Service;
 using Pagamentos.Util;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,9 +15,10 @@ builder.Services.AddControllers();
 builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("CatalogDatabaseSettingsDEV"));
 
 builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("MongoDBConnectionCheck");
-
 builder.Services.AddScoped<IMongoContexto, MongoContexto>();
+
 builder.Services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+builder.Services.AddScoped<IPagamentoService, PagamentoService>();
 
 
 builder.Services.AddEndpointsApiExplorer();

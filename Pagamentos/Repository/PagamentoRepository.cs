@@ -32,12 +32,12 @@ namespace Pagamentos.Repository
 
         public async Task Delete(string id)
         {
-            await _dbCollection.DeleteOneAsync(id);
+            await _dbCollection.DeleteOneAsync(x => x.Id == id);
         }
 
         public async Task Update(string id, Pagamento pagamento)
         {
-            await _dbCollection.ReplaceOneAsync(id, pagamento);
+            await _dbCollection.ReplaceOneAsync(u => u.Id == id, pagamento);
         }
     }
 }

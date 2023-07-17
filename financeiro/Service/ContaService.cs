@@ -6,17 +6,17 @@ namespace Contas.Service
 {
     public class ContaService : IContaService
     {
-        private readonly IContaRepository _contaService;
+        private readonly IContaRepository _repository;
         public ContaService(IContaRepository contaService)
         {
-            _contaService = contaService;
+            _repository = contaService;
         }
 
         public async Task<IList<Conta>> GetAllContaAsync()
         {
             try
             {
-                var contas = await _contaService.GetAll();
+                var contas = await _repository.GetAll();
                 if (contas == null) return null;
 
                 return contas;
@@ -31,7 +31,7 @@ namespace Contas.Service
         {
             try
             {
-                var conta = await _contaService.GetbyId(id);
+                var conta = await _repository.GetbyId(id);
                 if (conta == null) return null;
 
                 return conta;
@@ -44,9 +44,9 @@ namespace Contas.Service
 
         public async Task<Conta> AddConta(Conta conta)
         {
-            if (await _contaService.GetbyId(conta.Id) == null)
+            if (await _repository.GetbyId(conta.Id) == null)
             {
-                await _contaService.Add(conta);
+                await _repository.Add(conta);
                 return conta;
             }
             return null;
@@ -54,17 +54,17 @@ namespace Contas.Service
 
         public async Task DeleteConta(string id)
         {
-            var conta = await _contaService.GetbyId(id);
+            var conta = await _repository.GetbyId(id);
             if (conta == null)
                 throw new Exception("conta no existe");
-            await _contaService.Delete(id);
+            await _repository.Delete(id);
         }
 
         public async Task UpdateConta(string id, Conta conta)
         {
-            if (await _contaService.GetbyId(id) != null)
+            if (await _repository.GetbyId(id) != null)
             {
-                await _contaService.Update(id, conta);
+                await _repository.Update(id, conta);
             }
         }
     }
