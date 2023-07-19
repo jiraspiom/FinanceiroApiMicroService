@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contas", "financeiro\Contas.csproj", "{DFD4155C-ECF8-4B90-B135-2AFD1F1ED1BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contas", "Contas\Contas.csproj", "{DFD4155C-ECF8-4B90-B135-2AFD1F1ED1BC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pagamentos", "Pagamentos\Pagamentos.csproj", "{B0D081A0-D0BA-4630-AFED-9ACDBE7C81FB}"
 EndProject
