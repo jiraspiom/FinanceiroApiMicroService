@@ -6,5 +6,12 @@ namespace financeiro.DataBase
     public interface IMongoContext
     {
         IMongoCollection<Conta> Contas { get; }
+        IMongoCollection<Instituicao> Instituicoes { get; }
+
+        IMongoCollection<ContaTipo> ContaTipos { get; }
+
+        IMongoCollection<Cor> Cores { get; }
+
+        IMongoCollection<Categoria> Categorias { get; }
     }
 }
