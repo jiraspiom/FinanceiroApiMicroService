@@ -54,7 +54,7 @@ namespace Pagamentos.Service
         {
             var despesa = await _repository.GetbyId(id);
             if (despesa == null)
-                throw new Exception("despesa no existe");
+                throw new Exception("despesa não existe");
             await _repository.Delete(id);
         }
 
@@ -62,6 +62,7 @@ namespace Pagamentos.Service
         {
             if (await _repository.GetbyId(id) != null)
             {
+                despesa.UpdatedAt = DateTime.Now;
                 await _repository.Update(id, despesa);
             }
         }

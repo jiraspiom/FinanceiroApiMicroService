@@ -1,6 +1,6 @@
 ﻿namespace Pagamentos.Entity
 {
-    public enum Status
+    public enum enumStatus
     {
         Pendente =  101,
         Efetuada = 102,

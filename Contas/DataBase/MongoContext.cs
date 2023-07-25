@@ -19,8 +19,6 @@ namespace financeiro.DataBase
 
         public IMongoCollection<ContaTipo> ContaTipos => _database.GetCollection<ContaTipo>("contatipos");
 
-        public IMongoCollection<Cor> Cores => _database.GetCollection<Cor>("cores");
-
         public IMongoCollection<Categoria> Categorias => _database.GetCollection<Categoria>("catetorias");
 
     }

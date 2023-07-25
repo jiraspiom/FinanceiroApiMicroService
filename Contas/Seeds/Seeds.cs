@@ -11,7 +11,6 @@ namespace Contas.Seeds
         {
             await SeedInsertInstituicao(contexto.Instituicoes);
             await SeedInsertContaTipo(contexto.ContaTipos);
-            await SeedInsertCor(contexto.Cores);
             await SeedInsertCategoria(contexto.Categorias);
 
         }
@@ -58,25 +57,6 @@ namespace Contas.Seeds
             await collection.InsertManyAsync(dados);
         }
 
-        private async static Task SeedInsertCor(IMongoCollection<Cor> collection)
-        {
-            if (collection.Find(_ => true).Any())
-            {
-                return;
-            }
-
-            var dados = new List<Cor>
-            {
-                new Cor {Id = 1, Nome = "azul" },
-                new Cor {Id = 2, Nome = "verde" },
-                new Cor {Id = 3, Nome = "vermelho" },
-                new Cor {Id = 4, Nome = "laranja" },
-                new Cor {Id = 5, Nome = "amarelo" }
-            };
-
-            await collection.InsertManyAsync(dados);
-        }
-
         private async static Task SeedInsertCategoria(IMongoCollection<Categoria> collection)
         {
             if (collection.Find(_ => true).Any())
@@ -91,13 +71,13 @@ namespace Contas.Seeds
                 new Categoria { Id = 103, Nome = "Eletrônicos", Tipo = "despesa", Status= true },
                 new Categoria { Id = 104, Nome = "Lazer", Tipo = "despesa", Status= true },
                 new Categoria { Id = 105, Nome = "Outros", Tipo = "despesa", Status= true },
-                new Categoria { Id = 105, Nome = "Restaurante", Tipo = "despesa", Status= true },
-                new Categoria { Id = 106, Nome = "Saúde", Tipo = "despesa", Status= true },
-                new Categoria { Id = 107, Nome = "Serviços", Tipo = "despesa", Status= true },
-                new Categoria { Id = 108, Nome = "Supermercado", Tipo = "despesa", Status= true },
-                new Categoria { Id = 109, Nome = "Transportes", Tipo = "despesa", Status= true },
-                new Categoria { Id = 110, Nome = "Vestuario", Tipo = "despesa", Status= true },
-                new Categoria { Id = 111, Nome = "Viagem", Tipo = "despesa", Status= true },
+                new Categoria { Id = 106, Nome = "Restaurante", Tipo = "despesa", Status= true },
+                new Categoria { Id = 107, Nome = "Saúde", Tipo = "despesa", Status= true },
+                new Categoria { Id = 108, Nome = "Serviços", Tipo = "despesa", Status= true },
+                new Categoria { Id = 109, Nome = "Supermercado", Tipo = "despesa", Status= true },
+                new Categoria { Id = 110, Nome = "Transportes", Tipo = "despesa", Status= true },
+                new Categoria { Id = 111, Nome = "Vestuario", Tipo = "despesa", Status= true },
+                new Categoria { Id = 112, Nome = "Viagem", Tipo = "despesa", Status= true },
 
                 new Categoria { Id = 301, Nome = "Investimento", Tipo = "receita", Status = true },
                 new Categoria { Id = 302, Nome = "Outros", Tipo = "receita", Status = true },

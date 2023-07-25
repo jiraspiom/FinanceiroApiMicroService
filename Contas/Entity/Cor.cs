@@ -1,14 +1,11 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
-namespace Contas.Entity
+﻿namespace Contas.Entity
 {
-    public class Cor
+    public enum enumCor
     {
-        [BsonElement("id")]
-        public int Id { get; set; }
-
-        [BsonElement("nome")]
-        public string Nome { get; set; }
+        azul = 1,
+        verde = 2,
+        vermelho = 3,
+        laranja = 4,
+        amarelo = 5
     }
 }

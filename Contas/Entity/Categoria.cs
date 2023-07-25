@@ -5,9 +5,8 @@ namespace Contas.Entity
 {
     public class Categoria
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
+        [BsonElement("id")]
+        public int Id { get; set; }
 
         [BsonElement("nome")]
         public string Nome { get; set; }

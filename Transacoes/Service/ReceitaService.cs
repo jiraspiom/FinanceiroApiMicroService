@@ -14,10 +14,10 @@ namespace Pagamentos.Service
         {
             try
             {
-                var despesas = await _repository.GetAll();
-                if (despesas == null) return null;
+                var receitas = await _repository.GetAll();
+                if (receitas == null) return null;
 
-                return despesas;
+                return receitas;
             }
             catch (Exception ex)
             {
@@ -29,10 +29,10 @@ namespace Pagamentos.Service
         {
             try
             {
-                var despesa = await _repository.GetbyId(id);
-                if (despesa == null) return null;
+                var receita = await _repository.GetbyId(id);
+                if (receita == null) return null;
 
-                return despesa;
+                return receita;
             }
             catch (Exception ex)
             {
@@ -52,17 +52,18 @@ namespace Pagamentos.Service
 
         public async Task DeleteReceita(string id)
         {
-            var despesa = await _repository.GetbyId(id);
-            if (despesa == null)
-                throw new Exception("despesa no existe");
+            var receita = await _repository.GetbyId(id);
+            if (receita == null)
+                throw new Exception("receita não existe");
             await _repository.Delete(id);
         }
 
-        public async Task UpdateReceita(string id, Receita despesa)
+        public async Task UpdateReceita(string id, Receita receita)
         {
             if (await _repository.GetbyId(id) != null)
             {
-                await _repository.Update(id, despesa);
+                receita.UpdatedAt = DateTime.Now;
+                await _repository.Update(id, receita);
             }
         }
     }

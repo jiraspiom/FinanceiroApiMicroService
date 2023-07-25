@@ -21,15 +21,16 @@ namespace Pagamentos.Entity
         [BsonElement("conta_destino_id")]
         public string ContaDestinoId { get; set; }
 
-        [BsonElement("observacao")]
-        public string Observacao { get; set; }
-
         [BsonElement("tag")]
         public string Tag { get; set; } 
+
+        [BsonElement("observacao")]
+        public string Observacao { get; set; }
 
         [BsonElement("tranferencia_fixa")]
         public bool TranferenciaFixa { get; set; } = false;
 
+        // Datas
         [BsonElement("created_at")]
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 

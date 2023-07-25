@@ -10,8 +10,6 @@ namespace financeiro.DataBase
 
         IMongoCollection<ContaTipo> ContaTipos { get; }
 
-        IMongoCollection<Cor> Cores { get; }
-
         IMongoCollection<Categoria> Categorias { get; }
     }
 }

@@ -56,7 +56,7 @@ namespace Contas.Service
         {
             var conta = await _repository.GetbyId(id);
             if (conta == null)
-                throw new Exception("conta no existe");
+                throw new Exception("conta não existe");
             await _repository.Delete(id);
         }
 
@@ -64,6 +64,7 @@ namespace Contas.Service
         {
             if (await _repository.GetbyId(id) != null)
             {
+                conta.Updated_at = DateTime.Now;
                 await _repository.Update(id, conta);
             }
         }
