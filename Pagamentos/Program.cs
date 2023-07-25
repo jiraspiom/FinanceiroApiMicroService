@@ -17,8 +17,10 @@ builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("Ca
 builder.Services.AddHealthChecks().AddCheck<MongoHealthCheck>("MongoDBConnectionCheck");
 builder.Services.AddScoped<IMongoContexto, MongoContexto>();
 
-builder.Services.AddScoped<IPagamentoRepository, PagamentoRepository>();
-builder.Services.AddScoped<IPagamentoService, PagamentoService>();
+builder.Services.AddScoped<IDespesaRepository, DespesaRepository>();
+builder.Services.AddScoped<IDespesaService, DespesaService>();
+builder.Services.AddScoped<IReceitaRepository, ReceitaRepository>();
+builder.Services.AddScoped<IReceitaService, ReceitaService>();
 
 
 builder.Services.AddEndpointsApiExplorer();

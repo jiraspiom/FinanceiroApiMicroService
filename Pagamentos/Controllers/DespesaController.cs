@@ -8,12 +8,12 @@ namespace Pagamentos.Controllers
 {
     [ApiController]
     [Route("v1/[controller]")]
-    public class PagamentoController : ControllerBase
+    public class DespesaController : ControllerBase
     {
-        private readonly IPagamentoService _pagamentoService;
-        public PagamentoController(IPagamentoService pagamentoService)
+        private readonly IDespesaService _service;
+        public DespesaController(IDespesaService service)
         {
-            _pagamentoService = pagamentoService;
+            _service = service;
         }
 
         [HttpGet]
@@ -21,7 +21,7 @@ namespace Pagamentos.Controllers
         {
             try
             {
-                var pagamentos = await _pagamentoService.GetAllPagamentoAsync();
+                var pagamentos = await _service.GetAllDespesaAsync();
                 if (pagamentos == null) return NoContent();
 
                 return Ok(pagamentos);
@@ -38,7 +38,7 @@ namespace Pagamentos.Controllers
         {
             try
             {
-                var pagamento = await _pagamentoService.GetByIdPagamentoAsync(id);
+                var pagamento = await _service.GetByIdDespesaAsync(id);
                 if (pagamento == null) return NoContent();
 
                 return Ok(pagamento);
@@ -50,11 +50,11 @@ namespace Pagamentos.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Pagamento model)
+        public async Task<IActionResult> Post(Despesa model)
         {
             try
             {
-                var pagamento = await _pagamentoService.AddPagamento(model);
+                var pagamento = await _service.AddDespesa(model);
                 if (pagamento == null) return NoContent();
 
                 return Ok(pagamento);
@@ -67,17 +67,17 @@ namespace Pagamentos.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Update(string id, Pagamento model)
+        public async Task<IActionResult> Update(string id, Despesa model)
         {
             try
             {
                 if (model.Id != id)
-                    this.StatusCode(StatusCodes.Status409Conflict, "pagamento errada");
+                    this.StatusCode(StatusCodes.Status409Conflict, "despesa errada");
 
-                await _pagamentoService.UpdatePagamento(id, model);
+                await _service.UpdateDespesa(id, model);
                 return Ok(new { message = "atualizado" });
 
-                //var pagamento = await _pagamentoService.UpdateConta(id, model);
+                //var pagamento = await _despesaService.UpdateConta(id, model);
                 //if (pagamento == null) return NoContent();
 
                 //return Ok(pagamento);
@@ -94,12 +94,12 @@ namespace Pagamentos.Controllers
         {
             try
             {
-                var pagamento = await _pagamentoService.GetByIdPagamentoAsync(id);
+                var pagamento = await _service.GetByIdDespesaAsync(id);
                 if (pagamento == null)
                     this.StatusCode(StatusCodes.Status409Conflict,
-                        "Você está tentando deletar um Pagamento que não existe");
+                        "Você está tentando deletar uma despesa que não existe");
 
-                await _pagamentoService.DeletePagamento(id);
+                await _service.DeleteDespesa(id);
                 return Ok(new { message = "Deletado" });
 
                 //if (await _pagamentoService.DeletePagamento(id))
@@ -114,7 +114,7 @@ namespace Pagamentos.Controllers
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError,
-                    $"Erro ao tentar deletar pagamento com id: ${id}. Erro: {ex.Message}");
+                    $"Erro ao tentar deletar despesa com id: ${id}. Erro: {ex.Message}");
             }
         }
     }
