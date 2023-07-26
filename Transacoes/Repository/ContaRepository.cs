@@ -8,12 +8,13 @@ namespace Transacoes.Repository
     public class ContaRepository : IContaRepository
     {
         private readonly IMongoContexto _contexto;
-        private readonly IMongoCollection<Conta> _dbCollection;
-        public ContaRepository(IMongoContexto contexto, IMongoCollection<Conta> conta)
+        protected IMongoCollection<Conta> _dbCollection;
+        public ContaRepository(IMongoContexto context)
         {
-            _contexto = contexto;
-            _dbCollection = _contexto.GetCollection<Conta>(typeof(Conta).Name);
+            _contexto = context;
+            _dbCollection = _contexto.GetCollection<Conta>(typeof(Conta).Name.ToLower());
         }
+
         public async Task<Conta> GetbyId(string id)
         {
             return await _dbCollection.Find(x => x.Id == id).FirstOrDefaultAsync();

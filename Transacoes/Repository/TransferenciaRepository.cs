@@ -12,7 +12,7 @@ namespace Transacoes.Repository
         public TransferenciaRepository(IMongoContexto context)
         {
             _contexto = context;
-            _dbCollection = _contexto.GetCollection<Transferencia>(typeof(Transferencia).Name);
+            _dbCollection = _contexto.GetCollection<Transferencia>(typeof(Transferencia).Name.ToLower());
         }
 
         public async Task<IList<Transferencia>> GetAll()

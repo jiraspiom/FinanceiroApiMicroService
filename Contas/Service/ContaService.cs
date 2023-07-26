@@ -64,7 +64,7 @@ namespace Contas.Service
         {
             if (await _repository.GetbyId(id) != null)
             {
-                conta.Updated_at = DateTime.Now;
+                conta.UpdatedAt = DateTime.Now;
                 await _repository.Update(id, conta);
             }
         }

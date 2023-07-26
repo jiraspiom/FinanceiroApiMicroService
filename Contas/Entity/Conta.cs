@@ -34,10 +34,10 @@ namespace Contas.Entity
         public enumCor Cor { get; set; }
 
         [BsonElement("created_at")]
-        public DateTime Created_at { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         [BsonElement("updated_at")]
-        public DateTime? Updated_at { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }
 

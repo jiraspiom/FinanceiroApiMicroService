@@ -19,6 +19,6 @@ namespace Transacoes.Entity
         public bool Ativo { get; set; }
 
         [BsonElement("updated_at")]
-        public DateTime? Updated_at { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

@@ -59,12 +59,12 @@ namespace Transacoes.Service
             await _repository.Delete(id);
         }
 
-        public async Task UpdateDespesa(string id, Despesa despesa)
+        public async Task UpdateDespesa(string id, Despesa model)
         {
             if (await _repository.GetbyId(id) != null)
             {
-                despesa.UpdatedAt = DateTime.Now;
-                await _repository.Update(id, despesa);
+                model.UpdatedAt = DateTime.Now;
+                await _repository.Update(id, model);
             }
         }
     }

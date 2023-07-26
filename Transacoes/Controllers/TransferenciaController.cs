@@ -15,7 +15,7 @@ namespace Transacoes.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Contas()
+        public async Task<IActionResult> Tranferencias()
         {
             try
             {
@@ -32,7 +32,7 @@ namespace Transacoes.Controllers
 
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> Conta(string id)
+        public async Task<IActionResult> Tranferencia(string id)
         {
             try
             {

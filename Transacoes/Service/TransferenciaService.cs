@@ -1,4 +1,5 @@
 ﻿using Transacoes.Entity;
+using Transacoes.Interface;
 using Transacoes.Interface.Repository;
 using Transacoes.Interface.Service;
 
@@ -8,18 +9,15 @@ namespace Transacoes.Service
     {
         private readonly ITransferenciaRepository _repository;
 
-        private readonly IDespesaRepository _despesaRepository;
-        private readonly IReceitaRepository _receitaRepository;
+        private readonly IContaService _contaService;
 
         public TransferenciaService(
-            ITransferenciaRepository repository, 
-            IDespesaRepository despesaRepository, 
-            IReceitaRepository receitaRepository
+            ITransferenciaRepository repository,
+            IContaService contaService
             )
         {
             _repository = repository;
-            _despesaRepository = despesaRepository;
-            _receitaRepository = receitaRepository;
+            _contaService = contaService;
         }
         public async Task<IList<Transferencia>> GetAllTransferenciaAsync()
         {
@@ -53,12 +51,30 @@ namespace Transacoes.Service
 
         public async Task<Transferencia> AddTransferencia(Transferencia model)
         {
-            if (await _repository.GetbyId(model.Id) == null)
+            try
             {
-                await _repository.Add(model);
-                return model;
+                if (await _repository.GetbyId(model.Id) == null)
+                {
+                    // inicio atualizar conta
+                    var origem = await _contaService.GetByIdContaAsync(model.ContaOrigemId);
+                    var destino = await _contaService.GetByIdContaAsync(model.ContaDestinoId);
+                    origem.Saldo -= model.Valor;
+                    origem.UpdatedAt = DateTime.Now;
+                    destino.Saldo += model.Valor;
+                    destino.UpdatedAt = DateTime.Now;
+                    await _contaService.UpdateConta(origem.Id, origem);
+                    await _contaService.UpdateConta(destino.Id, destino);
+                    // fin atualizar conta
+
+                    await _repository.Add(model);
+                    return model;
+                }
+                return null;
             }
-            return null;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task DeleteTransferencia(string id)
@@ -69,12 +85,12 @@ namespace Transacoes.Service
             await _repository.Delete(id);
         }
 
-        public async Task UpdateTransferencia(string id, Transferencia Transferencia)
+        public async Task UpdateTransferencia(string id, Transferencia model)
         {
             if (await _repository.GetbyId(id) != null)
             {
-                Transferencia.UpdatedAt = DateTime.Now;
-                await _repository.Update(id, Transferencia);
+                model.UpdatedAt = DateTime.Now;
+                await _repository.Update(id, model);
             }
         }
     }

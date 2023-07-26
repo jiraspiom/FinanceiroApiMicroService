@@ -13,13 +13,13 @@ namespace financeiro.DataBase
             _database = mongoClient.GetDatabase(settings.Value.DataBaseName);
         }
 
-        public IMongoCollection<Conta> Contas => _database.GetCollection<Conta>("contas");
+        public IMongoCollection<Conta> Contas => _database.GetCollection<Conta>("conta");
 
-        public IMongoCollection<Instituicao> Instituicoes => _database.GetCollection<Instituicao>("instituicoes");
+        public IMongoCollection<Instituicao> Instituicoes => _database.GetCollection<Instituicao>("instituicao");
 
-        public IMongoCollection<ContaTipo> ContaTipos => _database.GetCollection<ContaTipo>("contatipos");
+        public IMongoCollection<ContaTipo> ContaTipos => _database.GetCollection<ContaTipo>("contatipo");
 
-        public IMongoCollection<Categoria> Categorias => _database.GetCollection<Categoria>("catetorias");
+        public IMongoCollection<Categoria> Categorias => _database.GetCollection<Categoria>("catetoria");
 
     }
 }
