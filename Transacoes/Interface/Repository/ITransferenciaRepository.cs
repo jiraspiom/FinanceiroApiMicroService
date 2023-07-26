@@ -1,6 +1,6 @@
-﻿using Pagamentos.Entity;
+﻿using Transacoes.Entity;
 
-namespace Pagamentos.Interface
+namespace Transacoes.Interface.Repository
 {
     public interface ITransferenciaRepository
     {

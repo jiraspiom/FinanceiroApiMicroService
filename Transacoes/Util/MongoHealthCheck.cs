@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MongoDB.Driver;
 
-namespace Pagamentos.Util
+namespace Transacoes.Util
 {
     public class MongoHealthCheck : IHealthCheck
     {

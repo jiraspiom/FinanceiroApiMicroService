@@ -1,7 +1,8 @@
-﻿using Pagamentos.Entity;
-using Pagamentos.Interface;
+﻿using Transacoes.Entity;
+using Transacoes.Interface.Repository;
+using Transacoes.Interface.Service;
 
-namespace Pagamentos.Service
+namespace Transacoes.Service
 {
     public class ReceitaService : IReceitaService
     {

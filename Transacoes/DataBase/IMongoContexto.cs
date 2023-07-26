@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 
-namespace Pagamentos.DataBase
+namespace Transacoes.DataBase
 {
     public interface IMongoContexto
     {

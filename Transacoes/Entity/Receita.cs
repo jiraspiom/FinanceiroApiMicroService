@@ -1,4 +1,4 @@
-﻿namespace Pagamentos.Entity
+﻿namespace Transacoes.Entity
 {
     public class Receita : Transacao
     {

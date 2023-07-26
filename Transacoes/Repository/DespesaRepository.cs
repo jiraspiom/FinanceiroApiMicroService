@@ -1,9 +1,9 @@
 ﻿using MongoDB.Driver;
-using Pagamentos.DataBase;
-using Pagamentos.Entity;
-using Pagamentos.Interface;
+using Transacoes.DataBase;
+using Transacoes.Entity;
+using Transacoes.Interface.Repository;
 
-namespace Pagamentos.Repository
+namespace Transacoes.Repository
 {
     public class DespesaRepository : IDespesaRepository
     {

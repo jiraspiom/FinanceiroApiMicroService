@@ -1,4 +1,4 @@
-﻿namespace Pagamentos.Entity
+﻿namespace Transacoes.Entity
 {
     public enum enumStatus
     {

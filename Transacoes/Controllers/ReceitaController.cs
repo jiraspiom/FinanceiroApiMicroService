@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
-using Pagamentos.DataBase;
-using Pagamentos.Entity;
-using Pagamentos.Interface;
+using Transacoes.Entity;
+using Transacoes.Interface.Service;
 
-namespace Pagamentos.Controllers
+namespace Transacoes.Controllers
 {
     [ApiController]
     [Route("v1/[controller]")]

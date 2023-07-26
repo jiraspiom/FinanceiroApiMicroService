@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
-namespace Pagamentos.Entity
+namespace Transacoes.Entity
 {
     public class Transacao
     {

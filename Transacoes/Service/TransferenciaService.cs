@@ -1,14 +1,25 @@
-﻿using Pagamentos.Entity;
-using Pagamentos.Interface;
+﻿using Transacoes.Entity;
+using Transacoes.Interface.Repository;
+using Transacoes.Interface.Service;
 
-namespace Pagamentos.Service
+namespace Transacoes.Service
 {
     public class TransferenciaService : ITransferenciaService
     {
         private readonly ITransferenciaRepository _repository;
-        public TransferenciaService(ITransferenciaRepository repository)
+
+        private readonly IDespesaRepository _despesaRepository;
+        private readonly IReceitaRepository _receitaRepository;
+
+        public TransferenciaService(
+            ITransferenciaRepository repository, 
+            IDespesaRepository despesaRepository, 
+            IReceitaRepository receitaRepository
+            )
         {
-            _repository = repository;   
+            _repository = repository;
+            _despesaRepository = despesaRepository;
+            _receitaRepository = receitaRepository;
         }
         public async Task<IList<Transferencia>> GetAllTransferenciaAsync()
         {

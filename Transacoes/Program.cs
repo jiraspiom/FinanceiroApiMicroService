@@ -1,9 +1,10 @@
 using financeiro.DataBase;
-using Pagamentos.DataBase;
-using Pagamentos.Interface;
-using Pagamentos.Repository;
-using Pagamentos.Service;
-using Pagamentos.Util;
+using Transacoes.DataBase;
+using Transacoes.Repository;
+using Transacoes.Service;
+using Transacoes.Util;
+using Transacoes.Interface.Repository;
+using Transacoes.Interface.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

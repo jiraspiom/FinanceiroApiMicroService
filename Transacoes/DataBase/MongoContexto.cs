@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
-namespace Pagamentos.DataBase
+namespace Transacoes.DataBase
 {
     public class MongoContexto : IMongoContexto
     {
