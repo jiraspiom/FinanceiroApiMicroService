@@ -39,5 +39,22 @@ namespace Transacoes.Repository
         {
             await _dbCollection.ReplaceOneAsync(u => u.Id == id, model);
         }
+
+        public async Task<TransacaoTotal> GetTotal()
+        {
+            var pendente = _dbCollection.AsQueryable()
+                .Where(x => x.StatusId != enumStatus.Efetuada)
+                .Sum(x => x.Valor);
+
+            var efetuada = _dbCollection.AsQueryable()
+                .Where(x => x.StatusId.Equals(enumStatus.Efetuada))
+                .Sum(x => x.Valor);
+
+            var total = _dbCollection.AsQueryable()
+                .Where(_ => true)
+                .Sum(x => x.Valor);
+
+            return new TransacaoTotal { Total = total, Pendente = pendente, Efetuada = efetuada };
+        }
     }
 }

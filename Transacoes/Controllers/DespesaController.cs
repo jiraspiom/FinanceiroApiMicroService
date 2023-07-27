@@ -115,5 +115,22 @@ namespace Transacoes.Controllers
                     $"Erro ao tentar deletar despesa com id: ${id}. Erro: {ex.Message}");
             }
         }
+
+        [HttpGet]
+        [Route("total")]
+        public async Task<IActionResult> TotalDespesa()
+        {
+            try
+            {
+                var total = await _service.GetTotalDespesa();
+                if (total == null) return NoContent();
+
+                return Ok(total);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro: {ex.Message}");
+            }
+        }
     }
 }

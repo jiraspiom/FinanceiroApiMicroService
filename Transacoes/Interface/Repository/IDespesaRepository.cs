@@ -9,5 +9,7 @@ namespace Transacoes.Interface.Repository
         Task Add(Despesa model);
         Task Delete(string id);
         Task Update(string id, Despesa model);
+
+        Task<TransacaoTotal> GetTotal();
     }
 }

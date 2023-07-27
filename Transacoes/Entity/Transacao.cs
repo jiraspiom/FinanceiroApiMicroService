@@ -22,7 +22,7 @@ namespace Transacoes.Entity
         public string Descricao { get; set; }
 
         [BsonElement("categoria_id")]
-        public string CategoriaId { get; set; }
+        public int CategoriaId { get; set; }
 
         [BsonElement("conta_id")]
         public string ContaId { get; set; }

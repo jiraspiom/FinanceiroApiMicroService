@@ -67,5 +67,20 @@ namespace Transacoes.Service
                 await _repository.Update(id, receita);
             }
         }
+
+        public async Task<TransacaoTotal> GetTotalReceita()
+        {
+            try
+            {
+                var total = await _repository.GetTotal();
+                if (total == null) return null;
+
+                return total;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

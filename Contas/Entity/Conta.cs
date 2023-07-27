@@ -19,16 +19,16 @@ namespace Contas.Entity
         public double Saldo { get; set; }
 
         [BsonElement("incluir_soma")]
-        public bool IncluirSoma { get; set; }
+        public bool IncluirSoma { get; set; } = true;
 
         [BsonElement("ativo")]
-        public bool Ativo { get; set; }
+        public bool Ativo { get; set; } = true;
 
         [BsonElement("instituicao_id")]
-        public string InstituicaoId { get; set; }
+        public int InstituicaoId { get; set; }
 
         [BsonElement("conta_tipo_id")]
-        public string ContaTipoId { get; set; }
+        public int ContaTipoId { get; set; }
 
         [BsonElement("cor")]
         public enumCor Cor { get; set; }

@@ -22,10 +22,10 @@ namespace Transacoes.Entity
         public string ContaDestinoId { get; set; }
 
         [BsonElement("tag")]
-        public string Tag { get; set; } 
+        public string? Tag { get; set; } 
 
         [BsonElement("observacao")]
-        public string Observacao { get; set; }
+        public string? Observacao { get; set; }
 
         [BsonElement("tranferencia_fixa")]
         public bool TranferenciaFixa { get; set; } = false;
