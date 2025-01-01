@@ -1,5 +1,4 @@
-﻿using Amazon.Runtime.Internal.Util;
-using Contas.Entity;
+﻿using Contas.Entity;
 using financeiro.DataBase;
 using MongoDB.Driver;
 

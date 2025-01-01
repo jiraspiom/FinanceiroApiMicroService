@@ -9,20 +9,20 @@ namespace Transacoes.Entity
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
 
+        [BsonElement("descricao")]
+        public string? Descricao { get; set; }
+
         [BsonElement("valor")]
         public double Valor { get; set; }
+
+        [BsonElement("categoria_id")]
+        public int CategoriaId { get; set; }
 
         [BsonElement("data")]
         public DateTime Data { get; set; }
 
         [BsonElement("status")]
         public enumStatus StatusId { get; set; }
-
-        [BsonElement("descricao")]
-        public string Descricao { get; set; }
-
-        [BsonElement("categoria_id")]
-        public int CategoriaId { get; set; }
 
         [BsonElement("conta_id")]
         public string ContaId { get; set; }
