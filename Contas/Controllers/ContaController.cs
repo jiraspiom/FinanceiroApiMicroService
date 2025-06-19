@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace financeiro.Controllers
 {
     [ApiController]
-    [Route("v1/[Controller]")]
+    //[Route("v1/[Controller]")]
+    [Route("api/account")]
     public class ContaController : ControllerBase
     {
         private readonly IContaService _contaService;
